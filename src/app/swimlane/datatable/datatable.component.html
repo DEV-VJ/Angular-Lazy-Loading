@@ -1,0 +1,44 @@
+<p-card>
+    <p-header>
+        <h1 class="p-text-center">Employees Data</h1>
+    </p-header>
+    <input
+        type="text"
+        style="padding:8px;margin:15px auto;width:30%;"
+        placeholder="Search here..."
+        (keyup)="updateFilter($event)"
+      />
+    <ngx-datatable 
+        #employees_table
+        class="material" 
+        [rows]="Employees" 
+        [headerHeight]="50"
+        [footerHeight]="50" 
+        [columnMode]="ColumnMode.force" 
+        rowHeight="auto"
+        [limit]="no_of_rows"
+        [loadingIndicator]="loading"
+        [sorts]="[{ prop: 'id', dir: 'asc' }]"
+    >
+
+        <ngx-datatable-column name="Id">
+            <ng-template let-value="value" ngx-datatable-cell-template>{{ value }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Name" [width]="300">
+            <ng-template let-value="value" ngx-datatable-cell-template>{{ value }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Gender" [width]="300">
+            <ng-template let-value="value" ngx-datatable-cell-template>{{ value | titlecase }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Age" [width]="30">
+            <ng-template let-value="value" ngx-datatable-cell-template>{{ value }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="State" [width]="300">
+            <ng-template let-row="row" ngx-datatable-cell-template>{{ row.address.state }}</ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="City" [width]="300" [sortable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>{{ row.address.city }}</ng-template>
+        </ngx-datatable-column>
+
+    </ngx-datatable>
+</p-card>
