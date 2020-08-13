@@ -26,7 +26,17 @@ export class DatatableComponent implements OnInit {
 
   load_employees_data(){
     this._commonService.get_all_employees_data().subscribe(res => {
-      this.Employees = res;
+      const temp_data = [];
+      res.map((data) => {
+        let temp_obj = Object.assign({},data);
+        delete temp_obj['address'];
+        for (const [key, value] of Object.entries(data)) {
+          if(typeof(data[key])  === 'object')
+            temp_obj = {...temp_obj,...data[key]}
+        }
+        temp_data.push(temp_obj);
+      })
+      this.Employees = temp_data;
       this.temp_emps = [...this.Employees];
       setTimeout(() => {
         this.loading = false;
@@ -39,7 +49,7 @@ export class DatatableComponent implements OnInit {
 
     // filter our data
     const temp = this.temp_emps.filter(function (d) {
-      return (d.name.toLowerCase().includes(val) || d.gender.toLowerCase().includes(val) || d.address.state.toLowerCase().includes(val) || d.address.city.toLowerCase().includes(val)) || !val;
+      return (d.name.toLowerCase().includes(val) || d.gender.toLowerCase().includes(val) || d.state.toLowerCase().includes(val) || d.city.toLowerCase().includes(val)) || !val;
     });
 
     // update the rows

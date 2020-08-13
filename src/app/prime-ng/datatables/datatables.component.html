@@ -3,7 +3,7 @@
     For lazy loading    
     <p-table #dt [loading]="loading" [lazy]="true" (onLazyLoad)="loadEmployees($event)" [value]="Employees" [paginator]="true" [rows]="no_of_rows" [showCurrentPageReport]="true" [totalRecords]="totalRecords" [resizableColumns]="true" styleClass="p-datatable-gridlines" sortField="id" sortOrder="1" [filterDelay]="0" [globalFilterFields]="['id','name','gender','age','address.city','address.state']"> -->
     <p-table #dt [columns]="selectedColumns" [loading]="loading" [value]="Employees" [paginator]="true" [rows]="no_of_rows" [showCurrentPageReport]="true" [(first)]="first"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [resizableColumns]="true" styleClass="p-datatable-gridlines" sortField="id" sortOrder="1" [filterDelay]="0" [globalFilterFields]="['id','name','gender','age','address.city','address.state']">
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [resizableColumns]="true" styleClass="p-datatable-gridlines" sortField="id" sortOrder="1" [filterDelay]="0" [globalFilterFields]="['id','name','gender','age','city','state']">
         <ng-template pTemplate="caption">
             <div class="table-header">
                 <div class="p-grid">
@@ -42,7 +42,7 @@
         <ng-template pTemplate="body" let-rowData let-columns="columns">
             <tr>
                 <td>{{rowData.id}}</td>
-                <td *ngFor="let col of columns">{{ rowData[col.field] ? rowData[col.field] : rowData.address[col.field] }}</td>
+                <td *ngFor="let col of columns">{{ rowData[col.field] }}</td>
                 <!-- <td>{{rowData.name}}</td>
                 <td>{{rowData.gender | titlecase}}</td>
                 <td>{{rowData.age}}</td>

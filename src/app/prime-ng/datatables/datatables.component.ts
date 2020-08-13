@@ -3,7 +3,6 @@ import { CommonService } from "../../services/common.service";
 import { Table } from 'primeng/table';
 import { LazyLoadEvent } from 'primeng/api';
 import { Employee } from "../../models/employee";
-import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-datatables',
@@ -41,7 +40,18 @@ export class DatatablesComponent implements OnInit {
 
   load_employees_data(){
     this._commonService.get_all_employees_data().subscribe(res => {
-      this.Employees = res;
+      const temp_data = [];
+      res.map((data) => {
+        let temp_obj = Object.assign({},data);
+        delete temp_obj['address'];
+        for (const [key, value] of Object.entries(data)) {
+          if(typeof(data[key])  === 'object')
+            temp_obj = {...temp_obj,...data[key]}
+        }
+        temp_data.push(temp_obj);
+      })
+      this.Employees = temp_data;
+      console.log(this.Employees)
       // this.datasource = res;
       // this.totalRecords = Object.keys(res).length;
       setTimeout(() => {
