@@ -1,10 +1,12 @@
 # Angular-lazy-loading
-This is a basic sample for lazy loading. Inner we have two modules one is for primeNg datatables and another is for swimlane(ngx-datatables)
+This is a basic sample for lazy loading. Inner we have two modules one is for primeNg datatables and another is for swimlane(ngx-datatables). 
+
+In that datatables some basic functionalities are added like sorting, pagination, filter and export options.
 
 ## Steps to set up in your system
 1. Download or clone the repository (Click Code button on above) into your local system.
 
-2. Open terminal for dowloaded folder in vscode or powershell and run `npm install`.
+2. Open terminal and navigate to the folder in vscode or powershell and run `npm install`.
 
 3. Run `ng serve --o` in your terminal to see the magic.
 
