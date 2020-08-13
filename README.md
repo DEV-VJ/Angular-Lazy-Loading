@@ -1,5 +1,12 @@
 # Angular-lazy-loading
-This is a basic sample for lazy loading. Inner we have two modules one is for primeNg datatables and another is for swimlane(ngx-datatables). 
+This is a basic sample for lazy loading. Inner we have two modules one is for primeNg datatables and another is for swimlane(ngx-datatables). See the below attached <a href="https://github.com/DEV-VJ/Angular-Lazy-Loading/blob/master/src/assets/images/Lazy%20Loading.png">Image</a>.
+
+<p align="center">
+  <a href="https://github.com/DEV-VJ/Angular-Lazy-Loading/blob/master/src/assets/images/Lazy%20Loading.png">
+    <img src="https://github.com/DEV-VJ/Angular-Lazy-Loading/blob/master/src/assets/images/Lazy%20Loading.png" alt="Lazy Loading Angular"/>
+  </a>
+</p>
+
 
 In that datatables some basic functionalities are added like sorting, pagination, filter and export options.
 
